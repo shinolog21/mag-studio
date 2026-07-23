@@ -2,7 +2,9 @@
 
 雑誌風画像エディタ。テンプレートのスロットに文字と写真を流し込み、4:5(1080×1350)の誌面画像PNG(書き出し2160×2700)を作る。仕様は `magazine-editor-requirements.md`(~/Downloads)を参照。
 
-**実装状況: Phase 1〜3 完了(2026-07-22)**
+**公開URL: https://shinolog21.github.io/mag-studio/** (GitHub Pages / gh-pagesブランチ配信)
+
+**実装状況: Phase 1〜3 完了(2026-07-22)、公開済み(2026-07-23)**
 
 - テンプレート3型(表紙型 / 特集エッセイ型 / 商品スペック型)+4型目を追加しやすいレジストリ構造
 - 号一覧(作成・複製・削除・JSONバックアップ入出力)、号編集(メタ情報・ページ並べ替え/複製/削除)
@@ -19,6 +21,18 @@ npm run dev      # http://localhost:5173 (--host付き: 同一LANの実機から
 npm run build    # 型チェック + dist/ビルド(PWAのSW生成込み)
 npm run preview  # ビルド版の確認(SW/オフラインの検証はこちらで)
 ```
+
+## デプロイ(GitHub Pages)
+
+リポジトリ: https://github.com/shinolog21/mag-studio (main=ソース、gh-pages=ビルド成果物)
+
+```bash
+GH_TOKEN=<トークン> bash tools/deploy.sh   # ビルドしてgh-pagesへforce push
+```
+
+このMacには永続的なGitHub認証がないため、トークンはOAuthデバイスフロー
+(gh公式client_id `178c6fc778ccc68e1d6a`、scope=repo)で都度取得する。
+※ Actionsのworkflowはscope=repoではpushできないため使っていない(gh-pages直接push方式)。
 
 ## 検証用URLパラメータ(開発用)
 
